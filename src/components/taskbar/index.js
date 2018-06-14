@@ -24,4 +24,4 @@ function  mapDispatchToProps(dispatch) {
 
 }
 
-export default  connect(mapDispatchToProps)(TaskBar);
+export default  connect(()=>{},mapDispatchToProps)(TaskBar);
