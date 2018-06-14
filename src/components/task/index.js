@@ -1,11 +1,30 @@
 import React from 'react';
 
-export default class Header extends React.Component{
+import { connect } from 'react-redux'
+
+import  {bindActionCreators} from  'redux';
+import {deleteTask} from "../../actions";
+
+
+class Task extends React.Component{
+
     render(){
         return(
-            <h1>
-                Todo App
-            </h1>
+            <tr>
+                <td>
+                    {this.props.task}
+                </td>
+                <td>
+                    <button onClick={()=>{this.props.deleteTask(this.props.id)}} > Delete</button>
+                </td>
+            </tr>
         );
     }
 }
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({deleteTask}, dispatch);
+
+}
+
+export default connect(()=>{return},mapDispatchToProps)( Task);
